@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head> 
+  <meta charset="utf-8"> 
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/simple-line-icons/css/simple-line-icons.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/landing-page.min.css' %}" rel="stylesheet">
+    
+    
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <title>글 업로드</title> 
+  <style>
+     .app{
+          width: 730px;
+          margin: auto;
+      }
+     .bg_gray {
+       background:  white  !important;
+       padding:23px; 
+      }
+     .main_bg{
+        background: #F2F2F2 ; 
+      }
+     h3{
+          font-size: 30px;
+          font-weight: 300;
+          letter-spacing: -0.6px;
+          color: black;
+          margin-bottom: 0px;
+      }
+     .fixed-bar{
+          width: 100%;
+          background-color: #fff;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 100;
+      }
+     footer{
+          padding: 10px 0 10px 0;
+          background-color: #495057;
+          color: #dee2e6;
+          font-size: 15px;
+          line-height: 1.6;
+          letter-spacing: -0.6px;
+          text-align: center;
+          z-index: 100;
+      }
+     .footer-list{
+          list-style-type: none;
+          margin: 24px 0;
+      }
+     .footer-list .footer-list-item{
+          display: inline-block;
+      }    
+     ul li{
+         display: inline-block;
+         letter-spacing: 0px;
+      }
+     form{
+         padding-top: 0px;
+      } 
+     ul li.tag-item{
+         padding: 4px 8px;
+         background-color: #53A6F3;
+         color: white;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main_bg">
+        <div class="app">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-bar app">
+              <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="https://pocket-fegoc.run.goorm.io/">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <br><br>
+            <img src="{% static "img/banner.png" %}" style="width: 730px; margin: auto;">
+            <div class="bg_gray">
+                <div class="form-group">
+                    <h3> <strong>글 작성하기</strong></h3>
+                    <span style="color:red">※ 공모 기간내 글쓰기 양식에 맞추어 글을 올리시면 공모전에 자동으로 응모됩니다.</span>
+                    <hr>
+                    <label for="InputTag"><strong>필수 사항 입력 </strong></label>
+                    <br>
+                </div>
+                <form action="/create/" method="POST" enctype="multipart/form-data">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="state">상품 상태</label>
+                            <input type="state" class="form-control" name="state" aria-describedby="stateHelp" placeholder="예:좋음, 적당함, 나쁨" style="width:450px;height:30px;font-size:15px;" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">도로명 주소</label>
+                            <input type="text" action="onclick" class="form-control" id="address" name="address" placeholder="도로명 주소를 적어주세요"  style="width:450px;height:30px;font-size:15px;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kmoney">한화</label>
+                            <input type="kmoney" class="form-control" name="kmoney" aria-describedby="kmoneyHelp" placeholder="예: 15,000원" style="width:450px;height:30px;font-size:15px;" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gmoney">외화</label>
+                            <input type="gmoney" class="form-control" name="gmoney" aria-describedby="gmoneyHelp" placeholder="예: 15달러, 928루블" style="width:450px;height:30px;font-size:15px;" >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">국가명</label>
+                            <input type="country" class="form-control" name="country" aria-describedby="countryHelp" placeholder="예: 미국, 러시아" style="width:450px;height:30px;font-size:15px;" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kakao">카카오톡 ID</label>
+                            <input type="kakao" class="form-control" name="kakao" aria-describedby="kakaoHelp" placeholder="" style="width:450px;height:30px;font-size:15px;" >
+                        </div>
+
+                        <div class="form-group">
+                            <hr>
+                            <label for="InputTag"><strong>사진 등록</strong></label>
+                            <br>
+                        </div>
+
+                            <div class="form-group">
+                                {% csrf_token %}
+                                <label for="InputFile">여행 사진</label>
+                                <input type="file" class="form-control-file" name="tphoto" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">사진은 최대 3장까지 올릴 수 있습니다.</small>
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="InputFiles">외화 사진</label>
+                                <input type="file" class="form-control-file" name="gphoto" aria-describedby="fileHelp">
+                                <small id="fileHelp" class="form-text text-muted">사진은 최대 3장까지 올릴 수 있습니다.</small>
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="InputTag"><strong>상품에 대한 글 작성하기</strong></label>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="detail" type="text" placeholder="100자 이내로 적어주세요." rows="3" maxlength="130" oninput="numberMaxLength(this);"></textarea>
+                            </div>
+                            <hr>
+                            <!-- 여기ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ-->
+                            <div class="form-group">
+                                <label for="writepw"><strong>글 삭제 시 필요한 비밀번호 입력</strong></label>
+                                <input type="writepw" class="form-control" name="writepw" aria-describedby="kakaoHelp" placeholder="" style="width:450px;height:30px;font-size:15px;" >
+                            </div>
+                            <br>
+                            <input type="submit" class="btn btn-primary btn-lg btn-block" value="글 업로드">
+                    </fieldset> 
+                </form>
+                
+                <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+                <script>//도로명 주소 팝업
+                document.getElementById("address").onclick = function(){
+                    new daum.Postcode({
+                        oncomplete: (data) => {
+                            document.getElementById("address").value = data.address
+                            }
+                            }).open();   
+                            }
+                </script>
+
+                <script>//글 길면 잘라냄
+                function numberMaxLength(e){
+                    if(e.value.length > e.maxLength){
+                        e.value = e.value.slice(0, e.maxLength);
+                        }
+                        }
+                </script>
+                <br>
+            </div>
+        </div>
+    </div>
+        
+    <footer id="footer">
+        <ul class="footer-list">
+            <li class="footer-list-item"><a target="_blank" href="#">이용약관</a></li>
+            <li class="footer-list-item"><a target="_blank" href="#">개인정보 취급방침</a></li>
+            <li class="footer-list-item"><a target="_blank" href="#">위치기반서비스 이용약관</a></li>
+            <li class="footer-list-item text-bold"><a target="_blank" href="#">광고주센터</a></li>
+            <li class="footer-list-item"><a target="_blank" href="#">ABOUT US</a></li>
+        </ul>
+        <ul class="footer-list" id="footer-address-list">
+            <li class="footer-list-item">사업자 등록번호 : 012-345-6789</li>
+            <li class="footer-list-item"><address>서울특별시 노원구 공릉로 232 서울과학기술대학교 무궁관 716호</address></li>
+            <li class="footer-list-item"><a href="mailto:team@daangn.com">team@naver.com</a></li>
+        </ul>
+        <p id="ceo">
+            (주)포켓머니  대표 박이방 패밀리 - JAKE 도움
+        </p>
+        <div id="copyright">
+            Copyright © Pocket Money Inc. All rights reserved.
+        </div>
+        <div id="social">
+            <ul class="footer-list">
+                <li class="footer-list-item">
+                    <a target="_blank" class="footer-social-link" href="#">
+                        <img class="footer-icon footer-facebook" alt="facebook" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-facebook-794156884f3fbb3ed53a9b9dfdef204a9b31159148fa6c267b486416f8b0a4ae.svg">
+                        <span class="sr-only">facebook</span>
+                    </a>
+                </li>
+                <li class="footer-list-item">
+                    <a target="_blank" class="footer-social-link" href="#">
+                        <img class="footer-icon footer-instagram" alt="instagram" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-instagram-321a1f6337e5e31aedec21e5b9d32ec20a6d61980b8d2d289c54f3adcda08f74.svg">
+                        <span class="sr-only">instagram</span>
+                    </a>
+                </li>
+                <li class="footer-list-item">
+                    <a target="_blank" class="footer-social-link" href="#">
+                        <img class="footer-icon footer-blog" alt="blog" src="https://d1unjqcospf8gs.cloudfront.net/assets/home/base/footer/icon-blog-fe4923c0ca92c1cf177e7dd898967967f25a23818244f48a941c797fa8b96206.svg">
+                        <span class="sr-only">blog</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
